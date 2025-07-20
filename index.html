@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr P.KUNAKA | AI & ML Portfolio</title>
+    <meta name="description" content="Portfolio of Mr P.KUNAKA, Zimbabwean B.Tech AI & ML Student in India. Aspiring AI Engineer & Algorithmic Trader.">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="hero">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about-projects.html">About & Projects</a>
+        </nav>
+        <a href="assets/resume.pdf" download class="resume-btn">
+            <button>
+                <span style="margin-right:0.5em;">&#128196;</span>Download Resume
+            </button>
+        </a>
+        <div class="hero-content container hero-flex">
+            <div class="hero-photo">
+                <img src="assets/images/your-photo.jpg" alt="Mr P.KUNAKA" />
+            </div>
+            <div class="hero-text">
+                <h1>Mr P.KUNAKA</h1>
+                <p class="hero-tagline">
+                    Zimbabwean Bachelor of Technology in Artificial Intelligence & Machine Learning Student in India on Scholarship
+                </p>
+                <p class="hero-subtagline">
+                    Aspiring AI Engineer & Algorithmic Trader
+                </p>
+                <div class="hero-buttons">
+                    <a href="about-projects.html">
+                        <button>Explore My Work</button>
+                    </a>
+                    <a href="mailto:your@email.com">
+                        <button>Contact Me</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="featured container" style="margin-top:2rem;">
+            <h2 class="featured-title">
+                Featured Project
+            </h2>
+            <div class="project-card neon-glow" style="max-width:420px;margin:2rem auto;">
+                <img src="assets/images/trading.png" alt="Bots & Automation" style="border-radius:1rem 1rem 0 0;">
+                <h3>Bots & Automation Apps</h3>
+                <p>Designing and developing intelligent bots and automation apps for data processing, workflow optimization, and smart decision-making across various domains.</p>
+                <a href="about-projects.html#projects" class="u-center">
+                    <button>View Details</button>
+                </a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p style="text-align:center;">&copy; 2025 Mr P.KUNAKA</p>
+        <div style="text-align:center;">
+            <a href="https://github.com/your-github" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+    <script>
+    // Jet steam trail effect
+    document.addEventListener('mousemove', function(e) {
+      const trail = document.createElement('div');
+      trail.className = 'jet-trail';
+      trail.style.left = (e.clientX - 8) + 'px';
+      trail.style.top = (e.clientY - 8) + 'px';
+      document.body.appendChild(trail);
+      setTimeout(() => {
+        trail.style.opacity = '0';
+        trail.style.transform = 'scale(1.8)';
+      }, 10);
+      setTimeout(() => {
+        trail.remove();
+      }, 700);
+    });
+    </script>
+</body>
+</html>
