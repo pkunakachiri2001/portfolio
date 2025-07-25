@@ -1,0 +1,477 @@
+:root {
+  --primary-color: #1a202c;
+  --secondary-color: #2d3748;
+  --accent-color: #3182ce;
+  --text-color: #edf2f7;
+  --bg-color: #f7fafc;
+  --font-sans: 'Inter', sans-serif;
+}
+/* Global resets */
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+/* Base styles */
+body {
+  font-family: var(--font-sans);
+  background: url('assets/images/african-forest.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-color: #184d1a;
+  animation: bg-shake 2.5s infinite cubic-bezier(.36,.07,.19,.97);
+}
+
+@keyframes bg-shake {
+  0%, 100% { background-position: center center; }
+  10% { background-position: 51% 49%; }
+  20% { background-position: 49% 51%; }
+  30% { background-position: 52% 48%; }
+  40% { background-position: 48% 52%; }
+  50% { background-position: 50% 50%; }
+  60% { background-position: 51% 49%; }
+  70% { background-position: 49% 51%; }
+  80% { background-position: 52% 48%; }
+  90% { background-position: 48% 52%; }
+}
+/* Navigation */
+nav {
+  background: rgba(30, 34, 60, 0.85);
+  backdrop-filter: blur(10px) saturate(1.3);
+  border-radius: 2.5rem;
+  box-shadow: 0 4px 32px #00fff733, 0 1.5px 8px #ff00ea33;
+  padding: 0.7rem 2.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  left: 2rem;
+  max-width: 540px;
+  margin: 0 auto;
+  z-index: 20;
+  border: 2.5px solid transparent;
+  animation: nav-neon-border 4s linear infinite;
+}
+
+@media (max-width: 700px) {
+  nav {
+    position: static;
+    margin: 1.2rem auto 0 auto;
+    max-width: 95vw;
+    justify-content: center;
+    padding: 0.7rem 1rem;
+  }
+}
+
+nav a {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.13rem;
+  letter-spacing: 0.5px;
+  margin-left: 2rem;
+  text-decoration: none;
+  padding: 0.4rem 1.2rem;
+  border-radius: 1.5rem;
+  transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+  position: relative;
+  z-index: 1;
+}
+
+nav a:first-child { margin-left: 0; }
+
+nav a:hover, nav a:focus {
+  background: linear-gradient(90deg, #00fff7 0%, #ff00ea 100%);
+  color: #181c2a;
+  box-shadow: 0 2px 16px #ff00ea99, 0 1px 8px #00fff799;
+  outline: none;
+}
+/* Hero section */
+.hero {
+  display: grid;
+  place-items: center;
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+  background: transparent; /* Remove overlay */
+  box-shadow: none;
+  color: #fff;
+  border-radius: 0;
+  padding: 2rem;
+}
+
+.hero::before {
+  display: none; /* Remove animated border */
+}
+
+/* Optional: keep the grid overlay for tech vibes */
+.hero::after {
+  display: none;
+}
+@keyframes hero-grid-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 240px 240px; }
+}
+.hero h1 {
+  font-size: 3.2rem;
+  font-family: 'Orbitron', 'Inter', sans-serif;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  color: #fff; /* Use plain color */
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
+  text-fill-color: initial;
+  animation: none;
+  filter: none;
+  position: relative;
+  z-index: 2;
+}
+.hero > * { position: relative; z-index: 1; }
+.hero p { font-size: 1.25rem; margin-bottom: 0.25rem; }
+/* Flexbox layout for hero section */
+.hero-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  padding: 2.5rem 0 2rem 0;
+}
+
+.hero-photo {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-photo img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #00fff7;
+  box-shadow: 0 0 32px #ff00ea88, 0 2px 16px #00fff799;
+  background: #181c2a;
+  transition: transform 0.3s;
+}
+
+.hero-photo img:hover {
+  transform: scale(1.06) rotate(-2deg);
+  box-shadow: 0 0 48px #ffe600cc, 0 4px 24px #ff00ea99;
+}
+
+.hero-text {
+  min-width: 260px;
+  max-width: 420px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.hero-text h1 {
+  font-size: 3.2rem;
+  font-family: 'Orbitron', 'Inter', sans-serif;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  color: #fff; /* Use plain color */
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
+  text-fill-color: initial;
+  animation: none;
+  filter: none;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-tagline {
+  font-size: 1.13rem;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-shadow: 0 2px 8px #00fff799;
+  margin-bottom: 0.2em;
+}
+
+.hero-subtagline {
+  font-size: 1.05rem;
+  color: #ffe600;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px #ff00ea99;
+  margin-bottom: 0.5em;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 0.7rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Example: Add inside your hero section */
+img[src="assets/images/baobab.png"] {
+  width: 120px;
+  position: absolute;
+  left: 2rem;
+  bottom: 1rem;
+  opacity: 0.8;
+}
+
+/* Sections */
+.featured, .about, .projects, .contact {
+  padding: 4rem 2rem; max-width: 1200px; margin: auto;
+  background: transparent; /* Remove overlay */
+  box-shadow: none;
+  border-radius: 0;
+  padding: 4rem 2rem;
+  margin: auto;
+}
+.featured {
+  position: relative;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 32px 8px #00fff799, 0 0 64px 16px #ff00ea33;
+  overflow: hidden;
+}
+.featured.container {
+  background: rgba(30, 34, 60, 0.72); /* simple overlay */
+  box-shadow: 0 0 40px 10px #00fff799, 0 0 80px 20px #ff00ea33;
+  border-radius: 1.7rem;
+  position: relative;
+  overflow: hidden;
+  padding: 2.5rem 1.5rem 3.5rem 1.5rem;
+  margin-bottom: 3rem;
+  z-index: 1;
+}
+.featured.container::before {
+  display: none;
+}
+.featured::after {
+  display: none; /* Remove animated border */
+}
+@keyframes featured-glow-move {
+  0% { opacity: 0.18; }
+  50% { opacity: 0.32; }
+  100% { opacity: 0.18; }
+}
+.featured > * { position: relative; z-index: 1; }
+.featured h2, .about h2, .projects h2, .contact h2 {
+  font-size: 2rem; margin-bottom: 1rem; position: relative;
+}
+/* Cards */
+.project-card, .card, .card.neon-glow, .project-card.neon-glow {
+  background: transparent; /* Remove card background */
+  box-shadow: none;
+  border-radius: .5rem;
+  overflow: hidden;
+  margin: 1rem;
+  transition: transform 0.3s;
+  animation: none;
+}
+.project-card:hover, .card:hover {
+  transform: translateY(-5px);
+}
+.project-card, .card.neon-glow {
+  position: relative;
+  border-radius: 1.2rem;
+  box-shadow: 0 0 24px 8px #00fff799, 0 0 48px 16px #ff00ea33;
+  overflow: hidden;
+  z-index: 1;
+  animation: card-pulse 3s infinite alternate;
+}
+@keyframes card-pulse {
+  0% { box-shadow: 0 0 24px 8px #00fff799, 0 0 48px 16px #ff00ea33; }
+  50% { box-shadow: 0 0 48px 16px #ffe60099, 0 0 96px 32px #ff00ea66; }
+  100% { box-shadow: 0 0 24px 8px #00fff799, 0 0 48px 16px #ff00ea33; }
+}
+.project-card.neon-glow h3 {
+  font-size: 1.35rem;
+  font-weight: 900;
+  margin: 1.2rem 0 0.7rem 0;
+  color: #222; /* Use plain color */
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
+  text-fill-color: initial;
+  text-shadow: none;
+}
+/* Grid layouts */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+/* Footer */
+footer {
+  background: var(--secondary-color);
+  color: var(--text-color);
+  text-align: center;
+  padding: 1rem;
+}
+button,
+a button {
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #00fff7, #ff00ea);
+  color: #222;
+  border: none;
+  border-radius: 999px; /* pill shape */
+  box-shadow: 0 2px 12px #00fff766, 0 1px 4px #ff00ea66;
+  padding: 0.8rem 2.2rem;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  outline: none;
+}
+
+button:hover,
+a button:hover,
+button:focus,
+a button:focus {
+  background: linear-gradient(90deg, #ff00ea, #00fff7);
+  color: #fff;
+  box-shadow: 0 4px 24px #ff00ea99, 0 2px 8px #00fff799;
+  transform: scale(1.06);
+}
+
+.resume-btn {
+  position: absolute;
+  top: 2.2rem;
+  right: 2.5rem; /* Use left: 2.5rem; for top left corner */
+  z-index: 30;
+  text-decoration: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+@media (max-width: 700px) {
+  .resume-btn {
+    top: 1.1rem;
+    right: 1.2rem;
+  }
+}
+/* [Continue with detailed CSS for forms, utility classes,
+   responsive breakpoints, typography, etc., to exceed 1000 words] */
+/* Add to style1.css or style2.css */
+.futuristic-badge {
+    border: 2px solid #00ffe7;
+    border-radius: 1rem;
+    box-shadow: 0 0 24px #00ffe7, 0 0 8px #0ff inset;
+    background: linear-gradient(135deg, #10131a 60%, #00ffe7 100%);
+    padding: 1rem;
+    transition: box-shadow 0.3s, transform 0.3s;
+    position: relative;
+    z-index: 1;
+}
+
+.futuristic-badge:hover {
+    box-shadow: 0 0 48px #00ffe7, 0 0 16px #0ff inset;
+    transform: scale(1.05) rotate(-1deg);
+}
+
+.futuristic-badge a {
+    color: #00ffe7 !important;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px #00ffe7;
+    font-size: 1.1em;
+}
+
+.rain-drop {
+  position: absolute;
+  top: 0;
+  width: 3px;
+  height: 18px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #00fff7 0%, #ff00ea 100%);
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 10;
+  animation: rain-fall 1.2s linear forwards;
+}
+
+.futuristic-badge {
+  position: relative; /* Ensure rain is positioned inside */
+  overflow: hidden;
+}
+
+@keyframes rain-fall {
+  0% { top: 0; opacity: 0.8; }
+  80% { opacity: 0.8; }
+  100% { top: 90%; opacity: 0; }
+}
+
+#bee-swarm {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.bee {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  pointer-events: none;
+  transition: top 3s linear, left 3s linear, transform 0.6s;
+  will-change: top, left, transform;
+}
+
+#forest-rain {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.forest-rain-drop {
+  position: absolute;
+  top: 0;
+  width: 1.5px;
+  height: 32px;
+  border-radius: 0 0 6px 6px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(200,200,200,0.3) 80%, rgba(255,255,255,0.0) 100%);
+  opacity: 0.45;
+  box-shadow: 0 0 6px rgba(255,255,255,0.18), 0 2px 8px rgba(180,180,180,0.12);
+  animation: forest-rain-fall 2.2s linear forwards;
+}
+
+@keyframes forest-rain-fall {
+  0% { top: -24px; opacity: 0.7; }
+  80% { opacity: 0.7; }
+  100% { top: 100vh; opacity: 0; }
+}
+
+.forest-rain-splash {
+  position: absolute;
+  width: 18px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.5) 60%, transparent 100%);
+  opacity: 0.5;
+  top: calc(100vh - 8px);
+  animation: splash-fade 0.6s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes splash-fade {
+  0% { opacity: 0.7; transform: scaleX(1) scaleY(1);}
+  80% { opacity: 0.4; transform: scaleX(1.3) scaleY(0.7);}
+  100% { opacity: 0; transform: scaleX(1.5) scaleY(0.5);}
+}
+#contact-form {
+  position: relative;
+  min-height: 200px; /* Ensure enough space for button to move */
+}
+#contact-form button[type="submit"] {
+  transition: left 0.25s, top 0.25s;
+}

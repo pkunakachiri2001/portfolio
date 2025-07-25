@@ -1,0 +1,613 @@
+/* Keyframe animations */
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.7);}
+  80% { opacity: 1; transform: scale(1.08);}
+  100% { opacity: 1; transform: scale(1);}
+}
+.container {
+  animation: fadeIn 1s ease-in-out;
+  margin-bottom: 2rem;
+}
+/* Buttons and form controls */
+button, input, textarea {
+  font-family: var(--font-sans);
+  margin-top: .5rem;
+}
+button {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: .75rem 1.5rem;
+  border-radius: .375rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+button:hover {
+  background: #276bb0; /* slightly darker accent */
+}
+/* Inputs */
+input[type="text"], input[type="email"], textarea {
+  width: 100%; padding: .75rem;
+  border: 1px solid #cbd5e0; border-radius: .375rem;
+  transition: border-color 0.3s;
+}
+input:focus, textarea:focus {
+  border-color: var(--accent-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.3);
+}
+/* Utility classes */
+.u-center { text-align: center; }
+.u-mb-4 { margin-bottom: 1rem; }
+.u-pt-2 { padding-top: .5rem; }
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--bg-color); }
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 6px;
+}
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: url('assets/images/african-forest.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text-color);
+  }
+  nav { background: #1a1f2e; }
+  .project-card, .card { background: #2d3748; }
+}
+/* Print styles */
+@media print {
+  nav, footer, button { display: none; }
+  body { background: white; color: black; }
+}
+
+/* Card enhancements */
+.card, .project-card {
+  box-shadow: 0 4px 16px rgba(49,130,206,0.10);
+  border: 1px solid #e2e8f0;
+  border-radius: .75rem;
+  background: #fff;
+  overflow: hidden;
+  transition: box-shadow 0.3s, border 0.3s, transform 0.2s;
+  animation: fadeIn 0.8s;
+}
+.card:hover, .project-card:hover {
+  box-shadow: 0 8px 32px rgba(49,130,206,0.18);
+  border-color: var(--accent-color);
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* Neon animated border for project cards */
+.card.neon-glow {
+  position: relative;
+  z-index: 1;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow:
+    0 0 16px 4px rgba(0,255,255,0.25),
+    0 0 32px 12px rgba(255,0,255,0.18),
+    0 0 48px 24px rgba(0,255,128,0.12);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  filter: brightness(0.95) blur(0px);
+  transition: box-shadow 0.3s, filter 0.3s, transform 0.2s;
+  will-change: transform;
+  perspective: 600px;
+}
+
+.card.neon-glow::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -6px; left: -6px; right: -6px; bottom: -6px;
+  border-radius: 1.4rem;
+  background: linear-gradient(120deg,
+    #00fff7, #ff00ea, #00ff80, #ffe600, #00fff7
+  );
+  background-size: 400% 400%;
+  filter: blur(8px) brightness(1.2);
+  animation: neon-border-move 3s linear infinite;
+  opacity: 0.85;
+}
+
+@keyframes neon-border-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.card.neon-glow:not(:hover) {
+  filter: brightness(0.85) blur(1px);
+  opacity: 0.92;
+}
+.card.neon-glow:hover {
+  z-index: 2;
+  transform: rotateY(8deg) scale(1.04);
+  box-shadow: 0 0 48px 16px #ffe60099, 0 0 96px 32px #ff00ea66;
+  filter: brightness(1.15) blur(0px);
+}
+
+/* Project images */
+.card img, .project-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Section headings */
+section > h2 {
+  font-size: 2.2rem;
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  text-align: center;
+}
+
+/* Responsive grid for projects */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Contact form feedback */
+form .error {
+  color: #e53e3e;
+  font-size: .95rem;
+  margin-bottom: .5rem;
+}
+form .success {
+  color: #38a169;
+  font-size: 1rem;
+  margin-bottom: .5rem;
+  animation: pop-in 0.7s cubic-bezier(.25,1.5,.5,1) both;
+}
+
+/* Footer social links */
+footer a {
+  color: var(--accent-color);
+  margin: 0 .5rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+footer a:hover, footer a:focus {
+  color: #63b3ed;
+}
+
+/* Accessibility focus */
+a:focus, button:focus, input:focus, textarea:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .project-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero h1 { font-size: 2rem; }
+  .hero { padding: 2rem 1rem; }
+  section { padding: 2rem 1rem; }
+}
+
+/* Subtle fade-in for all sections */
+section {
+  animation: fadeIn 1.2s;
+}
+
+/* Button animation */
+button:active {
+  transform: scale(0.97);
+}
+
+/* Utility for visually hidden (for accessibility) */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* Section divider */
+section:not(:last-child) {
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Jet trail effect */
+.jet-trail {
+  position: fixed;
+  pointer-events: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(180,220,255,0.7) 0%, rgba(49,130,206,0.25) 80%, transparent 100%);
+  box-shadow: 0 0 16px 4px rgba(49,130,206,0.15);
+  opacity: 1;
+  z-index: 9999;
+  transition: opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1);
+  will-change: opacity, transform;
+}
+
+/* Jet trail effect for projects page (purple-pink steam) */
+.jet-trail-projects {
+  position: fixed;
+  pointer-events: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(220,180,255,0.7) 0%, rgba(186,51,206,0.25) 80%, transparent 100%);
+  box-shadow: 0 0 16px 4px rgba(186,51,206,0.15);
+  opacity: 1;
+  z-index: 9999;
+  transition: opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1);
+  will-change: opacity, transform;
+}
+
+/* Fire glow effect for contact form */
+.contact.container, .contact-form {
+  box-shadow:
+    0 0 12px 4px rgba(255, 140, 0, 0.5),
+    0 0 32px 12px rgba(255, 69, 0, 0.25),
+    0 0 64px 24px rgba(255, 215, 0, 0.15);
+  border-radius: 1rem;
+  animation: fire-flicker 1.6s infinite alternate;
+  border: 2px solid rgba(255, 140, 0, 0.25);
+}
+
+@keyframes fire-flicker {
+  0% {
+    box-shadow:
+      0 0 12px 4px rgba(255, 140, 0, 0.5),
+      0 0 32px 12px rgba(255, 69, 0, 0.25),
+      0 0 64px 24px rgba(255, 215, 0, 0.15);
+    border-color: rgba(255, 140, 0, 0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 18px 8px rgba(255, 180, 0, 0.7),
+      0 0 40px 16px rgba(255, 99, 0, 0.35),
+      0 0 80px 32px rgba(255, 255, 0, 0.18);
+    border-color: rgba(255, 180, 0, 0.35);
+  }
+  100% {
+    box-shadow:
+      0 0 12px 4px rgba(255, 140, 0, 0.5),
+      0 0 32px 12px rgba(255, 69, 0, 0.25),
+      0 0 64px 24px rgba(255, 215, 0, 0.15);
+    border-color: rgba(255, 140, 0, 0.25);
+  }
+}
+
+/* Project card text enhancements */
+.card.neon-glow h3 {
+  font-size: 1.45rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  margin: 1rem 0 0.5rem 0;
+  background: linear-gradient(90deg, #00fff7 20%, #ff00ea 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  text-shadow:
+    0 2px 8px rgba(0,255,255,0.25),
+    0 1px 2px rgba(255,0,255,0.10);
+  transition: text-shadow 0.3s;
+}
+
+.card.neon-glow:hover h3 {
+  text-shadow:
+    0 4px 16px #ff00ea88,
+    0 2px 8px #00fff788;
+}
+
+.card.neon-glow p {
+  font-size: 1.08rem;
+  color: #fff;
+  font-weight: 500;
+  text-shadow: 0 2px 8px #222, 0 1px 2px #00fff7aa;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.1px;
+  line-height: 1.6;
+  background: rgba(0,0,0,0.18);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.7rem;
+}
+
+.card.neon-glow a button {
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: linear-gradient(90deg, #00fff7 0%, #ff00ea 100%);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 12px #00fff766, 0 1px 4px #ff00ea66;
+  padding: 0.7rem 1.7rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.card.neon-glow a button::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%; bottom: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff00ea, #00fff7);
+  transition: width 0.3s, left 0.3s;
+}
+
+.card.neon-glow a button:hover,
+.card.neon-glow a button:focus {
+  background: linear-gradient(90deg, #ff00ea 0%, #00fff7 100%);
+  box-shadow: 0 4px 24px #ff00ea99, 0 2px 8px #00fff799;
+  transform: scale(1.06);
+}
+
+.card.neon-glow a button:hover::after,
+.card.neon-glow a button:focus::after {
+  width: 80%;
+  left: 10%;
+}
+
+/* Contact form text and input enhancements */
+.contact-form label,
+.contact.container label {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #ffe600;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.3rem;
+  display: block;
+  text-shadow: 0 2px 8px #ff9900cc, 0 1px 2px #fff20099;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact.container input,
+.contact.container textarea {
+  font-size: 1.08rem;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  color: #fff;
+  background: rgba(30, 30, 30, 0.85);
+  border: 2px solid #ffe600;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 12px #ff990055;
+  transition: border 0.3s, box-shadow 0.3s, background 0.3s;
+  outline: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact.container input:focus,
+.contact.container textarea:focus {
+  border-color: #00fff7;
+  background: rgba(0, 20, 40, 0.98);
+  box-shadow:
+    0 0 0 3px #00fff799,
+    0 2px 16px #00fff799,
+    0 0 12px #00fff7cc;
+}
+
+.contact-form button[type="submit"],
+.contact.container button[type="submit"] {
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: 2px solid #00fff7;
+  background: linear-gradient(90deg, #ffe600 0%, #00fff7 100%);
+  color: #222;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form button[type="submit"]:hover,
+.contact-form button[type="submit"]:focus,
+.contact.container button[type="submit"]:hover,
+.contact.container button[type="submit"]:focus {
+  background: linear-gradient(90deg, #00fff7 0%, #ff00ea 100%);
+  border-color: #ff00ea;
+  box-shadow:
+    0 0 24px #00fff799,
+    0 2px 16px #ff00ea99,
+    0 0 32px #00fff799;
+  transform: scale(1.09) rotate(1deg);
+}
+
+.contact-form .success,
+.contact-form .error,
+.contact.container .success,
+.contact.container .error {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  text-align: center;
+}
+
+.contact-form .success,
+.contact.container .success {
+  background: linear-gradient(90deg, #00ff80 0%, #00fff7 100%);
+  color: #222;
+  box-shadow: 0 2px 8px #00fff799;
+}
+
+.contact-form .error,
+.contact.container .error {
+  background: linear-gradient(90deg, #ff4d4d 0%, #ffb347 100%);
+  color: #222;
+  box-shadow: 0 2px 8px #ff4d4d99;
+}
+
+/* About highlight section */
+.about-highlight {
+  background: linear-gradient(120deg, #232526 0%, #414345 100%);
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 32px #00fff733, 0 1.5px 8px #ff00ea33;
+  padding: 2rem 2.2rem;
+  margin: 1.5rem 0 2rem 0;
+  color: #fff;
+  font-size: 1.13rem;
+  font-weight: 500;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  border-left: 6px solid #00fff7;
+  border-right: 6px solid #ff00ea;
+  position: relative;
+  z-index: 1;
+}
+
+.about-highlight strong {
+  color: #ffe600;
+  font-size: 1.12em;
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 8px #ff9900cc, 0 1px 2px #fff20099;
+}
+
+.about-highlight ul {
+  margin: 0.7em 0 0 1.2em;
+  padding: 0;
+  list-style: disc;
+}
+
+.about-highlight li {
+  margin-bottom: 0.3em;
+  font-size: 1.07em;
+  color: #00fff7;
+  text-shadow: 0 1px 4px #222, 0 1px 2px #00fff7aa;
+}
+
+/* Featured section styles */
+.featured.container {
+  position: relative;
+  border-radius: 1.7rem;
+  background: rgba(30, 34, 60, 0.72);
+  box-shadow: 0 0 40px 10px #00fff799, 0 0 80px 20px #ff00ea33;
+  overflow: hidden;
+  padding: 2.5rem 1.5rem 3.5rem 1.5rem;
+  margin-bottom: 3rem;
+  z-index: 1;
+}
+
+.featured.container::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 2rem;
+  background: conic-gradient(from 0deg, #00fff7, #ff00ea, #ffe600, #00fff7 80%);
+  filter: blur(18px) brightness(1.2);
+  opacity: 0.5;
+  z-index: 0;
+  animation: featured-border-spin 7s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes featured-border-spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+.featured-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-family: 'Orbitron', 'Inter', sans-serif;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  margin-bottom: 2rem;
+}
+
+/* Project card enhancements */
+.project-card.neon-glow {
+  background: rgba(40, 44, 80, 0.92);
+  border-radius: 1.2rem;
+  box-shadow: 0 0 32px 8px #00fff799, 0 0 64px 16px #ff00ea33;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 2rem;
+  margin-bottom: 0;
+  z-index: 2;
+}
+
+.project-card.neon-glow h3 {
+  font-size: 1.35rem;
+  font-weight: 900;
+  margin: 1.2rem 0 0.7rem 0;
+  background: linear-gradient(90deg, #00fff7 20%, #ff00ea 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  text-shadow: 0 2px 8px #00fff7cc, 0 1px 2px #ff00ea99;
+}
+
+.project-card.neon-glow p {
+  color: #fff;
+  font-size: 1.08rem;
+  font-weight: 500;
+  text-shadow: 0 2px 8px #222, 0 1px 2px #00fff7aa;
+  margin-bottom: 1.2rem;
+  background: rgba(0,0,0,0.18);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.7rem;
+}
+
+.project-card.neon-glow button {
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: linear-gradient(90deg, #00fff7 0%, #ff00ea 100%);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 2px 12px #00fff766, 0 1px 4px #ff00ea66;
+  padding: 0.7rem 1.7rem;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.project-card.neon-glow button:hover,
+.project-card.neon-glow button:focus {
+  background: linear-gradient(90deg, #ff00ea 0%, #00fff7 100%);
+  box-shadow: 0 4px 24px #ff00ea99, 0 2px 8px #00fff799;
+  transform: scale(1.06);
+}
+
+/* Social media icons */
+.social {
+  font-size: 2rem;
+  margin: 0 0.7rem;
+  color: #00fff7;
+  transition: color 0.3s, text-shadow 0.3s, transform 0.2s;
+  text-shadow: 0 2px 12px #ff00ea66;
+}
+.social:hover {
+  color: #ff00ea;
+  text-shadow: 0 4px 24px #00fff799, 0 2px 8px #ff00ea99;
+  transform: scale(1.18) rotate(-8deg);
+}

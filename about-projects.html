@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About & Projects | Your Name</title>
+    <meta name="description" content="About and projects of Your Name, AI & ML Student.">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style2.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about-projects.html">About & Projects</a>
+        </nav>
+    </header>
+    <main>
+        <section id="about" class="about container" data-aos="fade-up">
+            <h2>About Me</h2>
+            <div class="about-highlight">
+                <p>
+                    I am a driven and innovative B.Tech student from Zimbabwe, specializing in Artificial Intelligence and
+                    Machine Learning, currently studying in India on a prestigious scholarship. My passion lies in building
+                    intelligent systems that solve real-world problems and in leveraging data-driven strategies for
+                    algorithmic trading.<br><br>
+                    <strong>Core Skills:</strong>
+                <p>
+                <ul>
+                    <li>Python & R for Data Science and Automation</li>
+                    <li>Advanced Data Structures & Algorithms</li>
+                    <li>Statistical Analysis & Predictive Modeling</li>
+                    <li>Financial Data Engineering & Trading Bots</li>
+                    <li>Interactive Dashboards & Data Visualization</li>
+                </ul>
+                <br>
+                I thrive in collaborative, fast-paced environments and am committed to continuous learning and impactful
+                innovation in the AI/ML space.
+                </p>
+            </div>
+        </section>
+        <section id="projects" class="projects container" data-aos="fade-up">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <div class="card neon-glow">
+                    <img src="assets/images/trading.png" alt="Bots & Automation">
+                    <h3>Bots & Automation Apps</h3>
+                    <p>Designing and developing intelligent bots and automation apps for data processing, workflow optimization, and smart decision-making across various domains.</p>
+                    <a href="#" target="_blank"><button>GitHub</button></a>
+                </div>
+                <div class="card neon-glow">
+                    <img src="assets/images/analytics.png" alt="Embedded Systems">
+                    <h3>Embedded Systems & Assembly</h3>
+                    <p>Building and programming embedded systems, including microcontroller coding, hardware-software integration, and low-level development using Assembly language (8086) for real-world applications.</p>
+                    <a href="assets/embedded-research.pdf" target="_blank">
+        <button>View Research PDF</button>
+    </a>
+                </div>
+                <div class="card neon-glow">
+                    <img src="assets/images/visualizer.png" alt="DS Visualizer">
+                    <h3>DS Visualizer</h3>
+                    <p>HTML/JS tool to visualize stacks, queues, trees, and graphs.</p>
+                    <a href="#" target="_blank"><button>GitHub</button></a>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="contact container" data-aos="fade-up">
+            <h2>Contact Me</h2>
+            <form id="contact-form" action="https://formspree.io/f/mblkdkje" method="POST" autocomplete="off">
+                <label>Name:
+                    <input type="text" name="name" required>
+                </label>
+                <label>Email:
+                    <input type="email" name="email" required>
+                </label>
+                <label>Message:
+                    <textarea name="message" rows="4" required></textarea>
+                </label>
+                <button type="submit">Send</button>
+                <div class="error" style="color:red;display:none;position:absolute;top:-2.5em;left:0;"></div>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Panashe Kunaka</p>
+        <div>
+            <a href="https://github.com/your-github" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/your-linkedin" target="_blank" class="social"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1200, once: true });
+    </script>
+    <script>
+let lastX = null, lastY = null;
+let currentColor = getRandomColor();
+
+function getRandomColor() {
+  // Array of nice pastel steam colors
+  const colors = [
+    'radial-gradient(ellipse at center, rgba(220,180,255,0.7) 0%, rgba(186,51,206,0.25) 80%, transparent 100%)',
+    'radial-gradient(ellipse at center, rgba(255,200,200,0.7) 0%, rgba(255,99,132,0.25) 80%, transparent 100%)',
+    'radial-gradient(ellipse at center, rgba(200,255,220,0.7) 0%, rgba(51,206,186,0.25) 80%, transparent 100%)',
+    'radial-gradient(ellipse at center, rgba(255,240,200,0.7) 0%, rgba(255,206,51,0.25) 80%, transparent 100%)'
+  ];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+
+document.addEventListener('mousemove', function(e) {
+  if (lastX !== null && lastY !== null) {
+    // Detect direction change
+    const dx = e.clientX - lastX;
+    const dy = e.clientY - lastY;
+    if ((dx > 0 && lastDx < 0) || (dx < 0 && lastDx > 0) ||
+        (dy > 0 && lastDy < 0) || (dy < 0 && lastDy > 0)) {
+      currentColor = getRandomColor();
+    }
+    lastDx = dx;
+    lastDy = dy;
+  } else {
+    lastDx = 0;
+    lastDy = 0;
+  }
+  lastX = e.clientX;
+  lastY = e.clientY;
+
+  const trail = document.createElement('div');
+  trail.className = 'jet-trail-projects';
+  trail.style.left = (e.clientX - 8) + 'px';
+  trail.style.top = (e.clientY - 8) + 'px';
+  trail.style.background = currentColor;
+  document.body.appendChild(trail);
+  setTimeout(() => {
+    trail.style.opacity = '0';
+    trail.style.transform = 'scale(1.8)';
+  }, 10);
+  setTimeout(() => {
+    trail.remove();
+  }, 700);
+});
+</script>
+<script>
+const form = document.getElementById('contact-form');
+const submitBtn = form.querySelector('button[type="submit"]');
+const errorMsg = form.querySelector('.error');
+
+function randomPosition(maxX, maxY) {
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+  return { x, y };
+}
+
+function moveButtonIfInvalid(e) {
+  if (!form.checkValidity()) {
+    submitBtn.style.position = 'absolute';
+    const formRect = form.getBoundingClientRect();
+    const btnRect = submitBtn.getBoundingClientRect();
+    const maxX = formRect.width - btnRect.width;
+    const maxY = formRect.height - btnRect.height;
+    const { x, y } = randomPosition(maxX, maxY);
+    submitBtn.style.left = x + 'px';
+    submitBtn.style.top = y + 'px';
+    errorMsg.style.display = 'block';
+    errorMsg.textContent = 'Please fill in all fields correctly!';
+    setTimeout(() => errorMsg.style.display = 'none', 1800);
+    e.preventDefault();
+  }
+}
+
+submitBtn.addEventListener('mouseenter', moveButtonIfInvalid);
+submitBtn.addEventListener('touchstart', moveButtonIfInvalid);
+
+form.addEventListener('input', () => {
+  if (form.checkValidity()) {
+    submitBtn.style.position = 'static';
+    submitBtn.style.left = '';
+    submitBtn.style.top = '';
+  }
+});
+
+submitBtn.addEventListener('click', function(e) {
+  if (!form.checkValidity()) {
+    e.preventDefault();
+  }
+});
+</script>
+</body>
+</html>
